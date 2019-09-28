@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Multisite/Multishop 1.4.0 für Zen-Cart 1.5.6 deutsch</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-language" content="de">
+<meta name="description" content="Multishop Modul für Zen Cart deutsch">
+<link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">  
+<script type="text/javascript" src="includes/jscript/jscript_tabs.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<div id="header">
+<h1>Multisite/Multishop 1.4.0 für Zen Cart 1.5.6 deutsch</h1>
+</div>
+
+<div id="slidetabsmenu" style="display: none;">
+<ul>
+  <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Sinn und Zweck</span></a></li>
+  <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>Installation</span></a></li>
+   <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Konfiguration</span></a></li>
+  <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Download & Support</span></a></li>
+  <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>Unterstützen</span></a></li>
+ </ul>
+</div>
+<br style="clear: both;">
+
+<!--Begin tabcontainer-->
+<div id="tabcontentcontainer">
+
+<!--Begin sc1-->
+<div class="tabcontent" id="sc1" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Sinn und Zweck dieses Moduls</h2>
+
+  <p>Multisite/Multishop erlaubt das Betreiben mehrerer Zen Cart Shops mit einer einzigen Zen Cart Installation.<br>
+    Artikel, Kunden, usw. werden nur in einer einzigen Administration verwaltet.<br>
+    Die Shops können unterschiedliche Layouts verwenden und unterschiedlich konfiguriert werden.<br>
+    Kategorien können 
+    in allen Shops oder nur in bestimmten angezeigt werden.<br>
+    Voraussetzung: Mehrere Domains oder Subdomains, die alle auf dieselbe Zen Cart Installation zielen.
+    <br>
+  </p>
+<h3>Copyright,  Lizenz</h3>
+<p>Copyright dieser deutschen Anpassung/Anleitung für Zen Cart 1.5.6 deutsch<br>
+(c) 2016-2019 webchills (<a href="http://www.webchills.at" target="_blank">www.webchills.at</a>)<br>
+<br>
+Anpassung des Moduls Multisite von <a href="http://www.zen-cart.com/downloads.php?do=file&id=378">http://www.zen-cart.com/downloads.php?do=file&amp;id=378</a> an die deutsche Zen Cart Version 1.5.6</p>
+<p> Portions Copyright (c) 2003 osCommerce<br>
+  Portions Copyright     (c) 2003-2019 Zen Cart</p>
+<p>This contribution is subject to version 3.0 of the GPL license available through the world-wide-web at the following url:<br>
+  <a href="http://www.zen-cart-pro.at/license/3_0.txt">http://www.zen-cart-pro.at/license/3_0.txt</a></p>
+</div>
+</div>
+</div>
+<!--End sc1-->
+
+<!--Begin sc2-->
+<div class="tabcontent" id="sc2" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Installation</h2>
+<h3>Voraussetzungen</h3>
+  <br>
+  <p>Dieses Modul ist<strong> nur für Zen Cart 1.5.6 deutsch geeignet</strong> und ändert zahlreiche sehr wichtige Corefiles.<br>
+    <strong>Es ist kein Modul, das Sie in 2 Minuten einfach hochladen können.</strong><br>
+  <br>
+    Für den Einbau dieses Moduls sollten Sie über folgende Werkzeuge verfügen:<br>
+  <br>
+    1) Ein guter Texteditor. <br>
+    Damit ist nicht das in Windows enthaltene Notepad oder Microsoft Word gemeint.<br>
+    Sie benötigen einen Texteditor, der utf-8 versteht und auch im Format utf-8 ohne BOM abspeichern kann.<br>
+     Empfehlung: <a href="https://store.ultraedit.com/affiliate.php?ACCOUNT=IDMCOMPU&AFFILIATE=84577&PATH=http%3A%2F%2Fwww.ultraedit.com%2Fdownloads%2Fultraedit_download.html" target="_blank">UltraEdit</a> (kostenlose 30 Tage Testversion verfügbar)<br>
+    Ebenfalls gut geeignet ist der kostenlose Texteditor <a href="http://notepad-plus.sourceforge.net/de/site.htm" target="_blank">Notepad++ </a><br>
+  </p>
+  <p>2) Ein Tool zum Vergleichen von Dateien<br>
+    Bei der Installation dieses Moduls ist es erforderlich, dass Sie den   Inhalt einiger Ihrer bestehenden Zen Cart Dateien mit dem Inhalt der   neuen Moduldateien vergleichen und die Änderungen zusammenführen   ("mergen").<br>
+     Empfehlung: <a href="http://www.scootersoftware.com/" target="_blank">BeyondCompare</a> (kostenlose 30 Tage Testversion verfügbar)<br>
+    Ebenfalls gut geeignet ist das kostenlose Programm <a href="http://winmerge.org/" target="_blank">WinMerge </a></p>
+  <p><br>
+  <strong>Empfehlung:</strong><br>
+  <br>
+  Dieses Modul erst in einem Testsystem einbauen und dort konfigurieren/testen und endgültig an die eigenen Wünsche anpassen.        Erst dann in einem Liveshop einsetzen! Sichern Sie unbedingt alle   Dateien Ihres Shops per FTP und sichern Sie die Datenbank mit phpMyAdmin   oder anderen geeigneten Tools!</p>
+<div id="warning"><b>WICHTIG</b><br>
+Vor dem Einbau dieser Änderungen:<br>
+BACKUP von Shop und Datenbank machen! <br>
+Keine Haftung, Verwendung auf eigene Gefahr!<br>
+BACKUP gemacht? Ok, dann weiterlesen...
+</div>
+<p><b>Voraussetzung</b></p>
+<p>Sie haben Zen Cart 1.5.6 bereits installiert und einen funktionsfähigen Shop. Diese Anleitung beschreibt, wie Sie Ihren bestehenden Shop modifizieren, um Multisite zu verwenden.</p>
+<p><strong>Planung:</strong>
+</p>
+<p>Bevor Sie dieses Modul integrieren, legen Sie erst Ihre gewünschte Konfiguration fest. In diesem Beispiel wird von 2 Shops ausgegangen.<br>
+  <br>
+  1)<br>
+  Domain<br>
+  Sie benötigen 2 unterschiedliche Domains, die beide auf dieselbe Zen Cart Installation zielen.<br>
+  Bsp: www.shop1.de und www.shop2.de<br>
+  Es könnten auch Subdomains sein, z.B. shop1.meinedomain.de und shop2.meinedomain.de<br>
+  Oder eine normale Domain und eine Subdomain, z.B.
+  shop1.meindedomain.de und www.meinedomain.de<br>
+  Richten Sie zunächst in Ihrer Domainverwaltung die beiden Domains so ein, dass beide auf dieselbe Zen Cart Installation zielen<br>
+  <br>
+  2)<br>
+  Template<br>
+  Sie müssen für die beiden Multishops unterschiedliche Templates verwenden.<br>
+  Bsp: <br>
+  Shop1 verwendet das Template responsive_classic<br>
+  Shop2 verwendet das Template classic
+  <br>
+  Entscheiden Sie sich dafür welcher Shop welches Template verwenden soll.</p>
+<p>3)<br>
+  Jetzt wo Domain und Template feststehen können Sie die Konfigurationsdateien anpassen:<br>
+  <br>
+  Konfiguration für Shop 1<br>
+  <br>
+  Öffnen Sie
+  <br>
+  NEUEDATEIEN/includes/config_sites/www.shop1.de_config.php mit einem Texteditor und ändern Sie folgende Demowerte auf Ihre echten ab:<br>
+  $template_dir = &quot;responsive_classic&quot;;<br>
+  define('SITE_NAME','shop1');<br>
+  define('HTTP_SERVER', 'http://shop1.meinedomain.de');<br>
+  define('HTTPS_SERVER', 'https://shop1.meinedomain.de');<br>
+  SITE_NAME ist dabei frei wählbar, geben Sie dem Shop einfach einen Namen, der für Sie Sinn macht. Dieser Name wird später intern in der Administration verwendet und sollte eher kurz sein und keine Leer- oder Sonderzeichen enthalten.
+  <br>
+  <br>
+Lassen Sie die Werte für Minify auf false, es ist besser Minify, das seit Zen Cart 1.5.3 standardmäßig aktiv ist, für Multishop nicht zu verwenden, da sonst die Stylesheets nicht korrekt geladen werden:</p>
+<p>define('MINIFY_STATUS_JS','false');<br>
+  define('MINIFY_STATUS_CSS','false');<br>
+  <br>
+Speichern Sie die Datei nun so ab, dass Ihre echte Domain exakt so enthalten ist, also wenn Ihre echte Domain für Shop 1 www.meinshop1.de lautet, dann speichern Sie als www.meinshop.de_config.php</p>
+<p>Konfiguration für Shop 2<br>
+  <br>
+Öffnen Sie <br>
+NEUEDATEIEN/includes/config_sites/www.shop2.de_config.php mit einem Texteditor und ändern Sie folgende Demowerte auf Ihre echten ab:<br>
+$template_dir = &quot;classic&quot;;<br>
+define('SITE_NAME','shop2');<br>
+define('HTTP_SERVER', 'http://shop2.meinedomain.de');<br>
+define('HTTPS_SERVER', 'https://shop2.meinedomain.de');<br>
+SITE_NAME ist dabei frei wählbar, geben Sie dem Shop einfach einen Namen, der für Sie Sinn macht. Dieser Name wird später intern in der Administration verwendet und sollte eher kurz sein und keine Leer- oder Sonderzeichen enthalten. </p>
+<p>Lassen Sie die Werte für Minify auf false, es ist besser Minify, das seit Zen Cart 1.5.3 standardmäßig aktiv ist, für Multishop nicht zu verwenden, da sonst die Stylesheets nicht korrekt geladen werden:</p>
+<p>define('MINIFY_STATUS_JS','false');<br>
+  define('MINIFY_STATUS_CSS','false');</p>
+<p>Speichern Sie die Datei nun so ab, dass Ihre echte Domain exakt so enthalten ist, also wenn Ihre echte Domain für Shop 2 www.meinshop2.de lautet, dann speichern Sie als www.meinshop2.de_config.php<br>
+  <br>
+  Die beiden Beispieldateien
+www.shop1.de_config.php und www.shop2.de_config.php können Sie nun löschen.<br>
+<br>
+Nach demselben Prinzip könnten Sie natürlich auch noch weitere Shops einbinden. </p>
+<p>  Nach diesen Vorbereitungen erfolgt die Installation nun in folgenden Schritten. Halten Sie diesen Ablauf ein!</p>
+<p>1) <br>
+  Im Ordner NEUE DATEIEN alle Ordner namens DEINTEMPLATE1 auf das in Ihrem Shop   verwendete Template umbenennen, das Sie für Shop 1 verwenden wollen (z.B. responsive_classic). Die Ordner namens DEINTEMPLATE2 auf das in Ihrem Shop verwendete Template umbenennen, das Sie für Shop 2 verwenden wollen (z.B. classic). Den   Ordner DEINADMIN auf den Namen Ihres admin Verzeichnisses   umbenennen.</p>
+<p>3) <br>
+  Dann alle Dateien/Ordner aus dem Ordner NEUE DATEIEN in der vorgegebenen Struktur in die Zen Cart Installation hochladen. <br>
+  Dabei werden keine bestehende Datei überschrieben.</p>
+<p>4)<br>
+  Im Ordner GEAENDERTE DATEIEN alle Ordner namens DEINTEMPLATE1 auf das in Ihrem Shop   verwendete Template umbenennen, das Sie für Shop 1 verwenden wollen (z.B. responsive_classic).    Die Ordner namens DEINTEMPLATE2 auf das in Ihrem Shop verwendete Template umbenennen, das Sie für Shop 2 verwenden wollen (z.B. classic). Den Ordner DEINADMIN auf den Namen Ihres admin Verzeichnisses   umbenennen.<br>
+  Wenn Sie Zen Cart 1.5.6 gerade frisch installiert haben und noch   keinerlei Änderungen an den Dateien vorgenommen haben, können Sie nun  alle Dateien/Ordner aus dem Ordner GEAENDERTE DATEIEN in der   vorgegebenen Struktur in die Zen Cart Installation hochladen. Dabei   werden dann etliche Dateien überschrieben.<br>
+  Wenn Sie Zen Cart 1.5.6 schon länger im Einsatz haben und schon einmal   Änderungen an Dateien vorgenommen oder andere Module eingebaut haben,   dann laden Sie die Dateien keinesfalls einfach hoch. <br>
+  Vergleichen Sie alle Dateien im Ordner GEAENDERTE DATEIEN mit den   entsprechenden Dateien in Ihrem Shop und nehmen Sie die Änderungen   manuell per WinMerge oder BeyondCompare vor.<br>
+  Dann spielen Sie die geänderten Dateien in der gezeigten Struktur ein.<br>
+  Vermutlich haben Sie in Ihrer Shopinstallation im Ordner includes/init_includes/overrides noch keine Dateien liegen. Vergleichen Sie diese Dateien mit den Originaldateien in Ihrem includes/init_includes Verzeichnis und spilene Sie die geänderten dann nach includes/init_includes/overrides.</p>
+<p>5)<br>
+  Laden Sie folgende Datei aus Ihrer Zen Cart Installation herunter:<br>
+  includes/configure.php<br>
+  Fügen Sie direkt am Anfang nach dem öffnenden &lt;?php<br>
+  Folgendes ein:
+  <br>
+  <br><code>
+  include_once('includes/config_sites/sites_switch.php'); </code><br>
+  Laden Sie die geänderte includes/configure.php wieder hoch und überschreiben Ihre bestehnde damit. Diese Datei ist normalerweise schreibgeschützt (chmod444), daher setzen Sie zunächst die Schreibrechte dieser Datei auf chmod777. Wurde die Änderung erfolgreich übernommen, setzen Sie wieder auf chmod444 zurück.<br>
+  <br>
+  6)<br>
+  Testen Sie nun, ob der Aufruf Ihrer beiden Domains korrekt zu 
+  den &quot;beiden&quot; Shops führt und ob das jeweils gewünschte Layout angezeigt wird (z.B. Shop 1 erscheint mit template responsive_classic und Shop 2 mit Template classic). Sollte das nicht so sein, dann überprüfen Sie nochmals genau den Inhalt und die Benennung ihrer beiden Konfigurationsdateien in includes/config_sites.
+</p>
+  </div>
+</div>
+</div>
+
+<!--End sc2-->
+
+<!--Begin sc3-->
+<div class="tabcontent" id="sc3" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>KONFIGURATION</h2>
+<p><b>Nachdem nun die grundlegenden Dinge eingestellt sind und funktionieren, können Sie ans Feintuning gehen.</b></p>
+<p> Unter Tools finden Sie in der Zen Cart Administration den neuen Menüpunkt Multisite Tools.<br>
+  <br>
+  <strong>Zeige die Konfigurationsoptionen für eine neue Seite <br>
+  </strong>liefert alle möglichen Konfigurationseinstellungen, die für die beiden Shops unterschiedlich eingestellt werden können.<br>
+  Wenn Sie in Shop 1 und Shop 2 für iregndwelche dieser Werte unterschiedliche verwenden wollen (und das ist ja eigentlich der Sinn des Multisite Moduls :-)), dann kopieren Sie die gewünschten Einträge jeweils in Ihre beiden Konfigdateien in includes/config_sites  </p>
+<p><strong>Zeige die Beziehungen zwischen Kategorien und Seiten<br>
+</strong>Hier können Sie konfigurieren, ob bestimmte Kategorien nur in einem Shop oder auch im anderen angezeigt werden sollen. Somit haben Sie die Möglichkeit, nicht nur Layout und Konfiguration der beiden Shops zu trennen, sondern auch in einem Shop nur bestimmte Kategorien anzuzeigen und im anderen Shop eben nur bestimmte andere.</p>
+<p><strong>Optional: Sidebox zum Verlinken des zweiten Shops</strong><br>
+  Unter Tools &gt; Boxlayout können Sie die Sidebox site_links.php aktivieren.<br>
+  Die entsprechenden Links und Texte können Sie anpassen in:<br>
+  includes/modules/sideboxes/DEINTEMPLATE1/site_links.php:<br>
+  add_site_link('Besuchen Sie auch...','http://shop1.meinedomain.de');  <strong><br>
+  </strong>includes/modules/sideboxes/DEINTEMPLATE2/site_links.php:<br>
+add_site_link('Besuchen Sie auch...','http://shop2.meinedomain.de');  <strong><br>
+  <br>
+</strong></p>
+</div>
+</div>
+</div>
+<!--End sc3-->
+
+<!--Begin sc5-->
+<div class="tabcontent" id="sc5" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+<h2>Download &amp; Support</h2>
+<p>Download des Moduls:</p>
+<p><a href="https://www.zen-cart-pro.at/forum/vbdownloads.php?categoryid=16" target="_blank">www.zen-cart-pro.at/forum/vbdownloads.php?categoryid=16</a></p>
+
+<p>Supportforum zum Modul:</p>
+<p><a href="http://www.zen-cart-pro.at/forum/forums/89-Multisite-Multishop" target="_blank">www.zen-cart-pro.at/forum/forums/89-Multisite-Multishop</a></p>
+</div>
+</div>
+</div>
+<!--End sc5-->
+
+<!--Begin sc6-->
+<div class="tabcontent" id="sc6" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Unterstützen</h2>
+<p>Sie finden dieses Modul nützlich?</p>
+<p>Sie haben vom Support im Forum auf www.zen-cart-pro.at profitiert?</p>
+<p>Unterstützen Sie die Weiterentwicklung der deutschen Zen Cart Version.<br/>Wir freuen uns über Spenden zur Finanzierung des Servers und der vBulletin-Lizenz: </p>
+<p><a href="https://donorbox.org/spende-fur-die-weiterentwicklung-der-deutschen-zen-cart-version" target="_blank"><img src="https://www.zen-cart-pro.at/zencartpro-donation-white.png" alt="Spende für die Weiterentwicklung der deutschen Zen Cart Version" title="Spende für die Weiterentwicklung der deutschen Zen Cart Version"></a></p>
+<br/><br/>
+<p>Du bist Entwickler und willst helfen, die deutsche Zen Cart Version noch besser zu machen?<br>
+  Beteilige Dich auf Github:<br>
+  <a href="https://github.com/zencartpro" target="_blank"><strong>https://github.com/zencartpro</strong></a></p>
+<br/><br/>
+</div>
+</div>
+</div>
+<!--End sc6-->
+</div>
+<div id="footer">
+Ein Modul von <a href="https://www.zen-cart-pro.at" target="_blank">www.zen-cart-pro.at</a> - Die deutsche Zen Cart Version
+</div>
+</div>
+<!--end tabcontainer-->
+<script type="text/javascript">document.getElementById('sc1').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc2').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc3').style.display = 'none';</script>
+
+<script type="text/javascript">document.getElementById('sc5').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc6').style.display = 'none';</script>
+<script type="text/javascript">ShowTabs()</script>
+<script type="text/javascript">
+// We only show the tab links if JavaScript is available/active.
+<!--
+if (document.getElementById("slidetabsmenu") != null) {
+  document.getElementById('slidetabsmenu').style.display = "block";
+}
+//-->
+</script>
+
+</body></html>
