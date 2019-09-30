@@ -5,15 +5,15 @@
  * @copyright Copyright 2003-2019 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: multisite.php 2019-09-28 21:04:36Z webchills $
+ * @version $Id: multisite.php 2019-09-29 10:01:36Z webchills $
  */
  
-  require('includes/application_top.php');
+  require 'includes/application_top.php';
   set_time_limit(60*5); //set 5 minutes time limit
   /**
    * Save cats/sites
    */
-  if(isset($_GET['action'])&&($_GET['action']=='categories_sites')&&isset($_GET['mode'])&&($_GET['mode']=='save')) {
+  if(isset($_GET['action'], $_GET['mode']) && ($_GET['action'] === 'categories_sites') && ($_GET['mode'] === 'save')) {
     if(isset($_GET['site'])) {
     $site_param = '&site='.$_GET['site'];
   } else {
@@ -26,15 +26,15 @@
       WHERE categories_id = '.$multisite_cat_id);
       while(!$multisite_query->EOF) {
         $multisite_cat_desc = preg_replace('/<!--(.|\s)*?-->/', '', $multisite_query->fields['categories_description']);
-        while($multisite_cat_desc['0']=="\n") {
+        while($multisite_cat_desc['0'] === "\n") {
           $multisite_cat_desc = substr($multisite_cat_desc,1);
         }
         if($multisite_sites!='') {
           $multisite_cat_desc = "<!--$multisite_sites-->\n$multisite_cat_desc";
         }
         //echo $multisite_cat_id.' -> '.$multisite_cat_desc."\n";
-        $sql = "UPDATE ".TABLE_CATEGORIES_DESCRIPTION." SET categories_description=:multisiteCategoriesDescription
-            WHERE language_id=".$multisite_query->fields['language_id']." AND categories_id = ".$multisite_cat_id;
+        $sql = 'UPDATE ' .TABLE_CATEGORIES_DESCRIPTION. ' SET categories_description=:multisiteCategoriesDescription
+            WHERE language_id=' .$multisite_query->fields['language_id']. ' AND categories_id = ' .$multisite_cat_id;
         $sql = $db->bindVars($sql, ':multisiteCategoriesDescription', $multisite_cat_desc, 'string'); 
         $db->Execute($sql);
         $multisite_query->MoveNext();
@@ -46,30 +46,28 @@
   }
 
 ?>
-
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html <?php echo HTML_PARAMS; ?>>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET; ?>">
-<title><?php echo TITLE; ?></title>
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
-<link rel="stylesheet" type="text/css" href="includes/SyntaxHighlighter.css">
-<script type="text/javascript" src="includes/menu.js"></script>
-<script type="text/javascript" src="includes/general.js"></script>
-<script type="text/javascript">
-  <!--
-  function init()
-  {
-    cssjsmenu('navbar');
-    if (document.getElementById)
-    {
-      var kill = document.getElementById('hoverJS');
-      kill.disabled = true;
-    }
-  }
-  
-  function add_to_all_cats() {
+  <head>
+    <meta charset="<?php echo CHARSET; ?>">
+    <title><?php echo TITLE; ?></title>
+    <link rel="stylesheet" href="includes/stylesheet.css">
+    <link rel="stylesheet" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
+    <link rel="stylesheet" type="text/css" href="includes/SyntaxHighlighter.css">
+    <script src="includes/menu.js"></script>
+    <script src="includes/general.js"></script>
+
+    <script>
+      function init() {
+          cssjsmenu('navbar');
+          if (document.getElementById) {
+              var kill = document.getElementById('hoverJS');
+              kill.disabled = true;
+          }
+      }
+    </script>
+    <script>
+     function add_to_all_cats() {
     var new_site = document.getElementById('txt_site').value;
     if(new_site!="") {
       var form_elements = document.forms["save_multisite"].elements;
@@ -96,6 +94,8 @@
       document.getElementById('txt_site').value = "";
     }
   }
+  </script>
+  <script>
   function remove_from_all_cats() {
     var rmv_site = document.getElementById('txt_site').value;
     if(rmv_site!="") {
@@ -135,11 +135,13 @@ input.multisite_sites{
   width:200px;
 }
 </style>
-</head>
-<body onLoad="init()">
-<!-- header //-->
-<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-<!-- header_eof //-->
+  </head>
+<body onLoad="init()" >
+      <!-- header //-->
+      <?php require DIR_WS_INCLUDES . 'header.php'; ?>
+      <!-- header_eof //-->
+      <div class="container-fluid">
+
 
 <!-- body //-->
 <table border="0" width="100%" cellspacing="2" cellpadding="2">
@@ -193,7 +195,7 @@ if(isset($_GET['action'])) {
       echo '</textarea>';
     break;
     case 'categories_sites':
-      if(!isset($_GET['mode'])||($_GET['mode']!='save')) {
+      if(!isset($_GET['mode'])||($_GET['mode'] !== 'save')) {
       ?>
       
       <h1><?php echo MULTISITE_CATEGORIE_TITLE ; ?></h1>
@@ -215,7 +217,10 @@ if(isset($_GET['action'])) {
         $filter ='';
         $site_param = '';
       }
-      $total_cats = sizeof($multisite_category_tree)-'1';
+      
+      $total_cats = count($multisite_category_tree)-'1';
+    
+   
       foreach($multisite_category_tree as $multisite_key=>$multisite_category) {
         if($multisite_category['id']=='0') {
           unset($multisite_category_tree[$multisite_key]); //remove the top category
@@ -231,11 +236,14 @@ if(isset($_GET['action'])) {
           } else {
             while(!$multisite_query->EOF)  {
               $multisite_cat_desc = $multisite_query->fields['categories_description'];
-              preg_match_all('/<!--(.|\s)*?-->/',$multisite_cat_desc,$multisite_comments,PREG_PATTERN_ORDER);
+              preg_match_all('/<!--(.|\s)*?-->/',$multisite_cat_desc,$multisite_comments);
               $multisite_cat_sites=array();
+              
                 foreach($multisite_comments['0'] as $multisite_comment) {
                 $multisite_comment= preg_replace('/\s\s+|/','', $multisite_comment);
-                $multisite_cat_sites[]=substr($multisite_comment,4,sizeof($multisite_comment)-4); //remove html comment
+                $multisite_comment_count = count($multisite_comments);
+                $multisite_cat_sites[]=substr($multisite_comment,4,$multisite_comment_count-4); //remove html comment
+                
                 }
                 //Add to the list of all sites
                 $multisite_cat_sites = implode('-',$multisite_cat_sites);
@@ -320,10 +328,11 @@ if(isset($_GET['action'])) {
     </td>
   </tr>
 </table>
+</div>
 <!-- body_eof //-->
 
 <!-- footer //-->
-<?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
+<?php require DIR_WS_INCLUDES . 'footer.php'; ?>
 <!-- footer_eof //-->
 <script type="text/javascript" src="includes/shCore.js"></script>
 <script type="text/javascript" src="includes/shBrushPhp.js"></script>
@@ -334,7 +343,7 @@ dp.SyntaxHighlighter.HighlightAll('code');
 </script>
 </body>
 </html>
-<?php require(DIR_WS_INCLUDES . 'application_bottom.php');
+<?php require DIR_WS_INCLUDES . 'application_bottom.php';
 
 /**
  * 
@@ -348,18 +357,18 @@ function MultisiteGetcPath($cID){
   static $parent_cache = array();
   $cats = array();
   //$cats[] = $cID;
-  $parent = $db->Execute("SELECT parent_id, categories_id
-                          FROM " . TABLE_CATEGORIES . "
-                          WHERE categories_id=" . (int)$cID);
+  $parent = $db->Execute('SELECT parent_id, categories_id
+                          FROM ' . TABLE_CATEGORIES . '
+                          WHERE categories_id=' . (int)$cID);
   while(!$parent->EOF && $parent->fields['parent_id'] != '0') {
     $parent_cache[(int)$parent->fields['categories_id']] = (int)$parent->fields['parent_id'];
     $cats[] = $parent->fields['parent_id'];
     if(isset($parent_cache[(int)$parent->fields['parent_id']])) {
       $parent->fields['parent_id'] = $parent_cache[(int)$parent->fields['parent_id']];
     } else {
-      $parent = $db->Execute("SELECT parent_id, categories_id
-                              FROM " . TABLE_CATEGORIES . "
-                              WHERE categories_id=" . (int)$parent->fields['parent_id']);
+      $parent = $db->Execute('SELECT parent_id, categories_id
+                              FROM ' . TABLE_CATEGORIES . '
+                              WHERE categories_id=' . (int)$parent->fields['parent_id']);
     }
   }
   $cats = array_reverse($cats);
