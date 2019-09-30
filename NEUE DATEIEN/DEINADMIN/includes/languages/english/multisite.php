@@ -1,8 +1,4 @@
 <?php
-/**
- * @package Multisite
- * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- */
 define('MULTISITE_TITLE','Multisite');
 define('MULTISITE_CONFIG_LINK','Display Configuration for a new site');
 define('MULTISITE_RELATIONS_LINK','Display the relations Categories/Sites');
@@ -14,5 +10,6 @@ define('MULTISITE_BUTTON_ADD_ALL','Add to all');
 define('MULTISITE_BUTTON_REMOVE_ALL','Remove from all');
 define('MULTISITE_CATEGORIE_REMINDER_TEXT','(don\'t forget to save)');
 define('MULTISITE_CATEGORIE_ALL_TEXT','All');
-define('MULTISITE_CATEGORIE','Categories');
-define('MULTISITE_SITE','sites');
+define('TABLE_HEADING_MULTISITE_CATEGORIE','Categories');
+define('TABLE_HEADING_MULTISITE_SITE','sites');
+define('TABLE_HEADING_ACTION','action');

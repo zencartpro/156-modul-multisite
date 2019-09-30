@@ -6,6 +6,7 @@
  */
 
 // test if box should display
+$show_site_links = true;
 
   unset($site_links);
 
@@ -16,7 +17,7 @@
     add_site_link('Besuchen Sie auch...','http://shop2.meinedomain.de');
 
 // only show if links are active
-  if (sizeof($site_links) > 0) {
+if (($show_site_links) && (sizeof($site_links) > 0)) {
     require($template->get_template_dir('tpl_site_links.php',DIR_WS_TEMPLATE, $current_page_base,'sideboxes') . '/tpl_site_links.php');
 
     $title =  BOX_HEADING_SITE_LINKS;

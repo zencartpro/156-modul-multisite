@@ -6,7 +6,7 @@
  * @copyright Copyright 2003-2019 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: category_tree.php for Multisite 2019-09-28 20:56:45Z webchills $
+ * @version $Id: category_tree.php for Multisite 2019-09-30 18:07:45Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -35,6 +35,7 @@ class category_tree extends base {
                              where c.parent_id = ".CATEGORIES_ROOT."
                              and c.categories_id = cd.categories_id
                              and cd.language_id='" . (int)$_SESSION['languages_id'] . "'
+                             AND cd.categories_description LIKE '%-" . SITE_NAME . "-%'
                              and c.categories_status= 1
                              order by sort_order, cd.categories_name";
     } else {
@@ -44,11 +45,12 @@ class category_tree extends base {
                              and ptc.category_id = cd.categories_id
                              and ptc.product_type_id = " . $master_type . "
                              and c.categories_id = ptc.category_id
+                             AND cd.categories_description LIKE '%-" . SITE_NAME . "-%'
                              and cd.language_id=" . (int)$_SESSION['languages_id'] ."
                              and c.categories_status= 1
                              order by sort_order, cd.categories_name";
     }
-    $categories = $db->Execute(cat_filter($categories_query), '', true, 150);
+    $categories = $db->Execute($categories_query, '', true, 150);
 // eof Multi site
     while (!$categories->EOF)  {
       $this->tree[$categories->fields['categories_id']] = array(
@@ -82,6 +84,7 @@ class category_tree extends base {
                                where c.parent_id = " . (int)$value . "
                                and c.categories_id = cd.categories_id
                                and cd.language_id=" . (int)$_SESSION['languages_id'] . "
+                               AND cd.categories_description LIKE '%-" . SITE_NAME . "-%'
                                and c.categories_status= 1
                                order by sort_order, cd.categories_name";
         } else {
@@ -102,14 +105,13 @@ class category_tree extends base {
                              and ptc.product_type_id = " . $master_type . "
                              and c.categories_id = ptc.category_id
                              and cd.language_id=" . (int)$_SESSION['languages_id'] ."
+                             AND cd.categories_description LIKE '%-" . SITE_NAME . "-%'
                              and c.categories_status= 1
                              order by sort_order, cd.categories_name";
 
         }
 
-// bof Multi site
-        $rows = $db->Execute(cat_filter($categories_query));
-// eof Multi site
+        $rows = $db->Execute($categories_query);
 
         if ($rows->RecordCount()>0) {
           $new_path .= $value;
