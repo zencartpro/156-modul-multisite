@@ -48,7 +48,14 @@
 <p>Copyright dieser deutschen Anpassung/Anleitung für Zen Cart 1.5.6 deutsch<br>
 (c) 2016-2019 webchills (<a href="http://www.webchills.at" target="_blank">www.webchills.at</a>)<br>
 <br>
-Anpassung des Moduls Multisite von <a href="http://www.zen-cart.com/downloads.php?do=file&id=378">http://www.zen-cart.com/downloads.php?do=file&amp;id=378</a> an die deutsche Zen Cart Version 1.5.6</p>
+Anpassung des Moduls Multisite von <a href="http://www.zen-cart.com/downloads.php?do=file&id=378">http://www.zen-cart.com/downloads.php?do=file&amp;id=378</a> an die deutsche Zen Cart Version 1.5.6<br>
+<br>
+Changelog Version 1.4.0<br>
+- Anpassungen für Zen Cart 1.5.6<br>
+- Anpassungen für PHP 7.3<br>
+- Bei der Bestellung wird der Shopname übergeben und bei den Bestellungen ist ersichtlich über welchen Shop bestellt wurde<br>
+- Anleitung aktualisiert
+</p>
 <p> Portions Copyright (c) 2003 osCommerce<br>
   Portions Copyright     (c) 2003-2019 Zen Cart</p>
 <p>This contribution is subject to version 3.0 of the GPL license available through the world-wide-web at the following url:<br>
@@ -153,7 +160,11 @@ www.shop1.de_config.php und www.shop2.de_config.php können Sie nun löschen.<br
 <br>
 Nach demselben Prinzip könnten Sie natürlich auch noch weitere Shops einbinden. </p>
 <p>  Nach diesen Vorbereitungen erfolgt die Installation nun in folgenden Schritten. Halten Sie diesen Ablauf ein!</p>
-<p>1) <br>
+<p>1)<br>
+  Im Ordner SQL die install.sql mit einem Texteditor öffnen und den Inhalt kopieren. In der Zen Cart Administration ins Eingabefeld unter Tools &gt; SQL Patches installieren kopieren und absenden.<br>
+  Dadurch wird die Tabelle orders mit einem neuen Feld erweitert, damit später bei den Bestellungen ersichtlich ist, über welchen Shop die Bestellung erfolgt ist.
+</p>
+<p>2) <br>
   Im Ordner NEUE DATEIEN alle Ordner namens DEINTEMPLATE1 auf das in Ihrem Shop   verwendete Template umbenennen, das Sie für Shop 1 verwenden wollen (z.B. responsive_classic). Die Ordner namens DEINTEMPLATE2 auf das in Ihrem Shop verwendete Template umbenennen, das Sie für Shop 2 verwenden wollen (z.B. classic). Den   Ordner DEINADMIN auf den Namen Ihres admin Verzeichnisses   umbenennen.</p>
 <p>3) <br>
   Dann alle Dateien/Ordner aus dem Ordner NEUE DATEIEN in der vorgegebenen Struktur in die Zen Cart Installation hochladen. <br>
@@ -208,8 +219,22 @@ Nach demselben Prinzip könnten Sie natürlich auch noch weitere Shops einbinden
   add_site_link('Besuchen Sie auch...','http://shop1.meinedomain.de');  <strong><br>
   </strong>includes/modules/sideboxes/DEINTEMPLATE2/site_links.php:<br>
 add_site_link('Besuchen Sie auch...','http://shop2.meinedomain.de');  <strong><br>
+<br>
+Über welchen Shop wurde bestellt?<br>
+</strong>Unter Bestellungen ist ersichtlich über welchen Shop die Bestellung erfolgt ist. Es kann auch mit einem Dropdown rechts oben nach den jeweiligen Shops eingeschränkt werden.<strong> <br>
   <br>
 </strong></p>
+<br/>
+<h2>DEINSTALLATION</h2>
+<p><b>Nachdem nun die grundlegenden Dinge eingestellt sind und funktionieren, können Sie ans Feintuning gehen.</b></p>
+<p>1.<br>
+  Alle von diesem Modul neu angelegten Dateien vom Server löschen.<br>
+  Alle von diesem Modul geänderten Dateien wieder mit den Originalversionen bzw. den Dateien Ihres Backups ersetzen.<br>
+  <br>
+  2.<br>
+Die Datei uninstall.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren</p>
+<p>3.<br>
+  Zen Cart Administration öffnen und unter Tools &gt; SQL Patches installieren den Inhalt ins Feld hineinkopieren und absenden.</p>
 </div>
 </div>
 </div>
